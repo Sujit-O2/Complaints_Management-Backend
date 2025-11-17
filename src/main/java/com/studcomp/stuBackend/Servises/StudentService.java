@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -62,7 +63,7 @@ public class StudentService {
         c.setSubject(dto.getSubject());
         c.setStatus("Pending");
         c.setDescription(dto.getDescription());
-        c.setDate(LocalDate.now().toString());
+        c.setDate(LocalDateTime.now().toString());
         c.setResponse("NA");
         return complaintRepo.save(c);
     }

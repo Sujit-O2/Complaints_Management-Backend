@@ -51,4 +51,11 @@ public class AdminController {
         String email = getEmail(auth);
         return ResponseEntity.ok(adminService.getStats(email));
     }
+    @DeleteMapping("/complaints/{id}")
+    public ResponseEntity<?> deleteComplaint(@PathVariable Long id) {
+        adminService.deleteComplaint(id);
+        return ResponseEntity.ok("Complaint deleted");
+    }
+
+
 }

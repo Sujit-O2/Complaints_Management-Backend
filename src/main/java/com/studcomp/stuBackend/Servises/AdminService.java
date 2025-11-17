@@ -98,4 +98,9 @@ public class AdminService {
         Users u = userRepo.findByRegiNo(regNo);
         if (u != null) userRepo.delete(u);
     }
+
+    public void deleteComplaint(Long id) {
+        Complaints cc=complaintsRepo.findById(Math.toIntExact(id)).orElseThrow(()->new UsernameNotFoundException("no data") );
+        complaintsRepo.delete(cc);
+    }
 }

@@ -43,17 +43,17 @@ public class login {
             System.out.println("JWT Token: " + token);
 
             Cookie cc = new Cookie("token", token);
-            cc.setSecure(false); // local dev
+            cc.setSecure(true); // local dev
             cc.setHttpOnly(true);
             cc.setPath("/");
-            cc.setAttribute("SameSite", "Lax");
+            cc.setAttribute("SameSite", "none");
             cc.setMaxAge(5 * 24 * 60 * 60);
             response.addCookie(cc);
             Cookie roleCookie = new Cookie("role", uu.getRole());
-            roleCookie.setSecure(false);
+            roleCookie.setSecure(true);
             roleCookie.setHttpOnly(false);
             roleCookie.setPath("/");
-            roleCookie.setAttribute("SameSite", "Lax");
+            roleCookie.setAttribute("SameSite", "none");
             roleCookie.setMaxAge(5 * 24 * 60 * 60);
             response.addCookie(roleCookie);
 
