@@ -46,7 +46,6 @@ public class login {
             cc.setSecure(true); // local dev
             cc.setHttpOnly(true);
             cc.setPath("/");
-            cc.setDomain("complaints-management-backend.onrender.com");
             cc.setAttribute("SameSite", "None");
             cc.setMaxAge(5 * 24 * 60 * 60);
             response.addCookie(cc);
@@ -56,10 +55,9 @@ public class login {
             roleCookie.setPath("/");
             roleCookie.setAttribute("SameSite", "None");
             roleCookie.setMaxAge(5 * 24 * 60 * 60);
-            roleCookie.setDomain("complaints-management-backend.onrender.com");
             response.addCookie(roleCookie);
 
-            return ResponseEntity.ok(token);
+            return ResponseEntity.ok(uu.getRole());
 
         } catch (Exception e) {
             System.out.println("Authentication failed: " + e.getClass().getSimpleName() + " - " + e.getMessage());
