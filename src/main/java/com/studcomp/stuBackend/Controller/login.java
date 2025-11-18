@@ -46,14 +46,14 @@ public class login {
             cc.setSecure(true); // local dev
             cc.setHttpOnly(true);
             cc.setPath("/");
-            cc.setAttribute("SameSite", "none");
+            cc.setAttribute("SameSite", "None");
             cc.setMaxAge(5 * 24 * 60 * 60);
             response.addCookie(cc);
             Cookie roleCookie = new Cookie("role", uu.getRole());
             roleCookie.setSecure(true);
             roleCookie.setHttpOnly(false);
             roleCookie.setPath("/");
-            roleCookie.setAttribute("SameSite", "none");
+            roleCookie.setAttribute("SameSite", "None");
             roleCookie.setMaxAge(5 * 24 * 60 * 60);
             response.addCookie(roleCookie);
 
