@@ -41,21 +41,25 @@ public class login {
             // Generate token and set cookies...
             String token = jwtToken.GenerateToken(uu);
             System.out.println("JWT Token: " + token);
-
             Cookie cc = new Cookie("token", token);
-            cc.setSecure(true); // local dev
+            cc.setSecure(true);
             cc.setHttpOnly(true);
             cc.setPath("/");
+            cc.setDomain("complaints-management-backend.onrender.com");
             cc.setAttribute("SameSite", "None");
             cc.setMaxAge(5 * 24 * 60 * 60);
             response.addCookie(cc);
+
+// role cookie
             Cookie roleCookie = new Cookie("role", uu.getRole());
             roleCookie.setSecure(true);
             roleCookie.setHttpOnly(false);
             roleCookie.setPath("/");
+            roleCookie.setDomain("complaints-management-backend.onrender.com");
             roleCookie.setAttribute("SameSite", "None");
             roleCookie.setMaxAge(5 * 24 * 60 * 60);
             response.addCookie(roleCookie);
+
 
             return ResponseEntity.ok(uu.getRole());
 
