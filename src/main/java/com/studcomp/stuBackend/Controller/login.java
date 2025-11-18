@@ -45,7 +45,6 @@ public class login {
             cc.setSecure(true);
             cc.setHttpOnly(true);
             cc.setPath("/");
-            cc.setDomain("complaints-management-backend.onrender.com");
             cc.setAttribute("SameSite", "None");
             cc.setMaxAge(5 * 24 * 60 * 60);
             response.addCookie(cc);
@@ -55,7 +54,6 @@ public class login {
             roleCookie.setSecure(true);
             roleCookie.setHttpOnly(false);
             roleCookie.setPath("/");
-            roleCookie.setDomain("complaints-management-backend.onrender.com");
             roleCookie.setAttribute("SameSite", "None");
             roleCookie.setMaxAge(5 * 24 * 60 * 60);
             response.addCookie(roleCookie);
