@@ -59,7 +59,7 @@ public class login {
             response.addCookie(roleCookie);
 
 
-            return ResponseEntity.ok(token);
+            return ResponseEntity.ok(uu.getRole());
 
         } catch (Exception e) {
             System.out.println("Authentication failed: " + e.getClass().getSimpleName() + " - " + e.getMessage());
