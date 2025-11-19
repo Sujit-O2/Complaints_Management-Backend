@@ -16,7 +16,6 @@ public class UserDetailsServiceS implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String emali) throws UsernameNotFoundException {
-        System.out.println("LoadByuser");
 
         Users uu=repo.findByEmail(emali).orElseThrow(()->new UsernameNotFoundException("No User Not found"));
         return new myuser(uu);
