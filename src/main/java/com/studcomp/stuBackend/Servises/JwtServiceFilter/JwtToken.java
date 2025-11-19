@@ -16,7 +16,7 @@ public class JwtToken {
                 .claim("role",user.getRole())
                 .subject(user.getEmail())
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis()+1000*60*60))
+                .expiration(new Date(System.currentTimeMillis()+1000L*60*60*24))
                 .signWith(key).compact();
     }
     public String getUser(String Token){

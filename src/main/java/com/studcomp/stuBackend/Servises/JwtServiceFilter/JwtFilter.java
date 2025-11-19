@@ -32,12 +32,12 @@ public class JwtFilter extends OncePerRequestFilter {
                     .findFirst()
                     .orElse(null);
         }
-        System.out.println("SujitMyuser1 "+token);
+        System.out.println(token);
 
         try {
             if (token != null) {
                 String Email = jwtToken.getUser(token);
-                System.out.println("gma"+token+Email);
+                System.out.println(token+Email);
 
 
                 if (Email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -50,7 +50,7 @@ public class JwtFilter extends OncePerRequestFilter {
             }
         }
         catch (Exception e){
-            System.out.println("fd");
+            System.out.println(e);
         }
         filterChain.doFilter(request,response);
 
