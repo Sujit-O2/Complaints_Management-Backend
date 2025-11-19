@@ -1,26 +1,31 @@
 # Stage 1: Build
-FROM openjdk:25-jdk-slim AS build
+FROM eclipse-temurin:17-jdk AS build
 WORKDIR /app
 
-# Copy Maven Wrapper and pom.xml
-COPY .mvn/ .mvn
+# Copy Maven wrapper and pom.xml first
 COPY mvnw pom.xml ./
-
-# Give execute permission to mvnw
+COPY .mvn/ .mvn
 RUN chmod +x mvnw
 
-# Download dependencies
+# Pre-download dependencies
 RUN ./mvnw dependency:go-offline -B
 
-# Copy the rest of the source code
+# Copy source code
 COPY src ./src
 
-# Package the app (skip tests for faster build)
+# Build app
 RUN ./mvnw clean package -DskipTests
 
 # Stage 2: Run
-FROM openjdk:25-jdk-slim
+FROM eclipse-temurin:17-jdk
 WORKDIR /app
+
+# Copy the built jar
 COPY --from=build /app/target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Use Render dynamic port
+ENV PORT=8080
+EXPOSE $PORT
+
+# Start app
+ENTRYPOINT ["sh", "-c", "java -jar app.jar --server.port=$PORT"]
